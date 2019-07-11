@@ -32,7 +32,7 @@
 export default {
   data () {
     const checkMobile = (rule, value, callback) => {
-      if (/^1[3-9]\d(9)$/.test(value)) {
+      if (/^1[3-9]\d{9}$/.test(value)) {
         callback()
       } else {
         callback(new Error('手机号不正确'))
@@ -65,7 +65,7 @@ export default {
         if (valid) {
           // 提交登陆请求 axios是基于primise封装的 post() 返回一个promise对象
 
-          this.axios.post('', this.loginForm)
+          this.axios.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
             .then((res) => {
               // res是响应对象  包含后台返回的数据 res.data
               // 1.跳转首页
@@ -73,7 +73,7 @@ export default {
             //   console.log(res.data)
               this.$router.push('/')
             }).catch(() => {
-              this.$message.error('错了')
+              this.$message.error('cuowu')
             })
         }
       })
