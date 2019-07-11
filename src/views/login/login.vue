@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <el-card class="container-box">
-      <img src alt />
+      <img src="../../assets/images/logo_index.png" alt />
       <!-- 登陆表单 -->
       <!-- 使用element-ui组件，步骤 -->
       <!-- 根据需求找到需要的组件 -->
@@ -32,7 +32,7 @@
 export default {
   data () {
     const checkMobile = (rule, value, callback) => {
-      if (/^1[3-9]\d(9)$/.test(value)) {
+      if (/^1[3-9]\d{9}$/.test(value)) {
         callback()
       } else {
         callback(new Error('手机号不正确'))
@@ -65,7 +65,7 @@ export default {
         if (valid) {
           // 提交登陆请求 axios是基于primise封装的 post() 返回一个promise对象
 
-          this.axios.post('', this.loginForm)
+          this.axios.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
             .then((res) => {
               // res是响应对象  包含后台返回的数据 res.data
               // 1.跳转首页
@@ -88,15 +88,18 @@ export default {
   height: 100%;
   background-color: green;
   position: absolute;
-  // background: url('../../');
+  background: url('../../assets/images/login_bg.jpg');
   .container-box {
     width: 400px;
-    height: 300px;
+    height: 340px;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     img {
+      display: block;
+      width: 200px;
+      margin: 10px auto;
     }
   }
 }
