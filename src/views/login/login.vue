@@ -65,12 +65,13 @@ export default {
         if (valid) {
           // 提交登陆请求 axios是基于primise封装的 post() 返回一个promise对象
 
-          this.axios.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
+          this.axios.post('authorizations', this.loginForm)
             .then((res) => {
+              window.sessionStorage.setItem('74-toutiao', JSON.stringify(res.data.data))
               // res是响应对象  包含后台返回的数据 res.data
               // 1.跳转首页
               // 2.保存用户的信息，用来判断登陆的状态
-            //   console.log(res.data)
+              //   console.log(res.data)
               this.$router.push('/')
             }).catch(() => {
               this.$message.error('cuowu')
@@ -88,7 +89,7 @@ export default {
   height: 100%;
   background-color: green;
   position: absolute;
-  // background: url('../../');
+  background: url('../../assets/images/login_bg.jpg') no-repeat center / cover;
   .container-box {
     width: 400px;
     height: 300px;
@@ -96,8 +97,7 @@ export default {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    img {
-    }
+
   }
 }
 </style>
