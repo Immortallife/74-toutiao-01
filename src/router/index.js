@@ -4,6 +4,7 @@ import login from '@/views/login/login.vue'
 import home from '@/views/home/home.vue'
 import welcome from '@/views/welcome/index.vue'
 import notfound from '@/views/404/index.vue'
+import article from '@/views/article/index.vue'
 
 Vue.use(VueRouter)
 const router = new VueRouter({
@@ -15,7 +16,8 @@ const router = new VueRouter({
       children: [
         {
           name: 'welcome', path: '/', component: welcome
-        }
+        },
+        { name: 'article', path: '/article', component: article }
       ] },
     { name: '404', path: '*', component: notfound }
   ]

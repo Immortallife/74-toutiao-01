@@ -5,7 +5,7 @@
          <el-menu
          router
          style="border-right:none"
-      default-active="/"
+      :default-active="$route.path"
       class="el-menu-vertical-demo"
 
       background-color="#002033"
