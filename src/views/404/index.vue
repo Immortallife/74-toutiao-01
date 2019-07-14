@@ -1,6 +1,6 @@
 <template>
     <div class="container-s">
-        <img src="../../assets/images/404.png" alt="">
+
     </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
 
 <style lang="less">
 .container-s{
-    text-align: center;
+ position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../../assets/images/404.png) no-repeat center / cover;
 }
 </style>

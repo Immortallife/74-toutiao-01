@@ -54,12 +54,12 @@
         <!-- 下拉菜单 -->
         <el-dropdown style="float:right">
           <span class="el-dropdown-link">
-              <img  style="width:30px;height:30px;vertical-align:middle"   src="../../assets/images/avatar.jpg" alt="">
-            <i class="el-icon-arrow-down el-icon--right" style="vertical-align:middle;padding-left:5px">黑马小哥 </i>
+              <img  style="width:30px;height:30px;vertical-align:middle"   :src="avatar" alt="">
+            <i class="el-icon-arrow-down el-icon--right" style="vertical-align:middle;padding-left:5px">{{name}} </i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-setting">个人信息</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-unlock">退出登录</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-setting" @click.native="setting()">个人信息</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-unlock"  @click.native="logout()">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
@@ -74,12 +74,26 @@
 export default {
   data () {
     return {
-      collapse: false
+      collapse: false,
+      avatar: '',
+      name: ''
     }
+  },
+  created () {
+    const user = JSON.parse(window.sessionStorage.getItem('74-toutiao'))
+    this.avatar = user.photo
+    this.name = user.name
   },
   methods: {
     iscollapse () {
       this.collapse = !this.collapse
+    },
+    setting () {
+      this.$router.push('/setting')
+    },
+    logout () {
+      window.sessionStorage.removeItem('74-toutiao')
+      this.$router.push('/login')
     }
   }
 }
