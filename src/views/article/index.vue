@@ -2,11 +2,7 @@
     <div class="container-v">
         <el-card >
             <div slot="header">
-                    <el-breadcrumb separator-class="el-icon-arrow-right">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>内容管理</el-breadcrumb-item>
-
-                </el-breadcrumb>
+                <my-bread>内容管理</my-bread>
                 </div>
             <el-form :model="reqParams" label-width="80px">
 
@@ -45,7 +41,9 @@
 </template>
 
 <script>
+import MyBread from '@/components/my-bread.vue'
 export default {
+  components: { MyBread },
   data () {
     return {
       reqParams: {
