@@ -1,7 +1,16 @@
 import axios from 'axios'
+import JSONBig from 'json-bigint'
 const instance = axios.create({
 
-  baseURL: 'http://ttapi.research.itcast.cn/mp/v1_0/'
+  baseURL: 'http://ttapi.research.itcast.cn/mp/v1_0/',
+  transformResponse: [(data) => {
+    // 这里的data就是json数据
+    if (data) {
+      // 避免后端无响应内容的情况 做一下判断
+      return JSONBig.parse(data)
+    }
+    return data
+  }]
   // headers: { Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem('74-toutiao')).token }
 })
 // 请求拦截器
@@ -21,7 +30,8 @@ instance.interceptors.request.use((config) => {
 instance.interceptors.response.use((response) => {
   return response
 }, (error) => {
-  if (error.response.status === 401) {
+  // 错误响应的对象有数据并且响应的状态码是401都满足的情况下 避免后端无响应内容的情况
+  if (error.response && error.response.status === 401) {
     location.hash = '#/login'
   }
   return Promise.reject(error)
