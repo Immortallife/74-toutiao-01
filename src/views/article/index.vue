@@ -1,5 +1,6 @@
 <template>
   <div class="container-v">
+
     <el-card>
       <div slot="header">
         <my-bread>内容管理</my-bread>
@@ -16,14 +17,9 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="频道：">
-          <el-select v-model="reqParams.channel_id">
-            <el-option
-              v-for="item in channelOptions"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id"
-            ></el-option>
-          </el-select>
+          <!-- :value="reqParams.channel_id" @input="将变化的值赋值给reqParams.channel_id" -->
+          <my-channel v-model="reqParams.channel_id"></my-channel>
+
         </el-form-item>
         <el-form-item label="日期：">
           <el-date-picker
@@ -63,7 +59,7 @@
         <el-table-column label="状态">
           <!-- 作用域插槽 -->
           <template slot-scope="scope">
-            {{scope.row.id}}
+            <!-- {{scope.row.id}} -->
             <el-tag v-if="scope.row.status===0" type="info">草稿</el-tag>
             <el-tag v-if="scope.row.status===1">待审核</el-tag>
             <el-tag v-if="scope.row.status===2" type="success">审核通过</el-tag>
@@ -107,19 +103,19 @@ export default {
         begin_pubdate: null,
         end_pubdate: null
       },
-      channelOptions: [],
+
       articles: [],
       ValueDate: [],
       total: 0
     }
   },
   created () {
-    this.getChannelOption()
     // 获取文章列表数据
     this.getArticles()
     console.log(this.articles)
   },
   methods: {
+
     edit (id) {
       this.$router.push(`/publish?id=${id}`)
     },
@@ -155,14 +151,7 @@ export default {
       console.log(this.reqParams.begin_pubdate)
       console.log(this.reqParams.end_pubdate)
     },
-    async getChannelOption () {
-      // 解构赋值 res响应内容{data:{data:{channels:{}}}}
 
-      const {
-        data: { data }
-      } = await this.axios.get('channels')
-      this.channelOptions = data.channels
-    },
     async getArticles () {
       const {
         data: { data }
