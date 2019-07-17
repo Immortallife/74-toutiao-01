@@ -45,14 +45,15 @@
       </div>
       <el-table :data="articles">
         <el-table-column label="封面">
+          <!-- 作用域插槽 -->
           <template slot-scope="scope">
             <el-image :src="scope.row.cover.images[0]" style="width:100px;height:75px" alt>
 
                 <div slot="error" >
                 <img src="../../assets/images/error.gif" width="100" height="75" alt="">
                 </div>
-
             </el-image>
+
           </template>
         </el-table-column>
         <el-table-column label="标题" prop="title"></el-table-column>
@@ -156,7 +157,7 @@ export default {
       const {
         data: { data }
       } = await this.axios.get('articles', { params: this.reqParams })
-      console.log({ data: { data } })
+      // console.log({ data: { data } })
       this.articles = data.results
       // 列表请求成功渲染之后，将获取到的数据总条数赋值给data中的total
       this.total = data.total_count
