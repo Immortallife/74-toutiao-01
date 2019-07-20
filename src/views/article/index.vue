@@ -103,6 +103,7 @@ export default {
         channel_id: null,
         begin_pubdate: null,
         end_pubdate: null
+
       },
 
       articles: [],

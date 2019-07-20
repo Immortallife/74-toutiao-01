@@ -94,7 +94,7 @@ export default {
     },
     // 切换收藏和取消收藏
     async toggleFav (item) {
-      const { data: { data } } = await this.$http.put('user/images/' + item.id, {
+      const { data: { data } } = await this.axios.put('user/images/' + item.id, {
         collect: !item.is_collected
       })
       // 成功
@@ -166,6 +166,7 @@ export default {
       background: rgba(0, 0, 0, 0.5);
       span {
         margin: 0 20px;
+        border: #ddd;
         &.red {
           color: red;
         }
