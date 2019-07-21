@@ -7,6 +7,9 @@ import notfound from '@/views/404/index.vue'
 import article from '@/views/article/index.vue'
 import Image from '@/views/image/index.vue'
 import Publish from '@/views/publish/index.vue'
+import Comment from '@/views/comment/index.vue'
+import Setting from '@/views/setting/index.vue'
+import Fans from '@/views/fans/index.vue'
 
 Vue.use(VueRouter)
 const router = new VueRouter({
@@ -21,7 +24,10 @@ const router = new VueRouter({
         },
         { name: 'article', path: '/article', component: article },
         { name: 'image', path: '/image', component: Image },
-        { name: 'publish', path: '/publish', component: Publish }
+        { name: 'publish', path: '/publish', component: Publish },
+        { name: 'comment', path: '/comment', component: Comment },
+        { name: 'setting', path: '/setting', component: Setting },
+        { name: 'fans', path: '/fans', component: Fans }
 
       ] },
     { name: '404', path: '*', component: notfound }
