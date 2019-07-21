@@ -9,10 +9,10 @@
           <div class="grid-content bg-purple">
             <el-form v-model="userForm" label-width="120px">
               <el-form-item label="编号">
-                <el-input type="text">{{userForm.id}}</el-input>
+                {{userForm.id}}
               </el-form-item>
               <el-form-item label="手机">
-                <el-input type="text">{{userForm.mobile}}</el-input>
+              {{userForm.mobile}}
               </el-form-item>
               <el-form-item label="媒体名称">
                 <el-input type="text" v-model="userForm.name"></el-input>
